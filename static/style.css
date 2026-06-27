@@ -37,3 +37,26 @@ height:700px;
 width:100%;
 
 }
+
+#legend{
+    padding:10px;
+    background:white;
+}
+
+.legend-item{
+    margin-right:20px;
+    font-size:15px;
+}
+
+.dot{
+    display:inline-block;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    margin-right:5px;
+}
+
+.green{background:green;}
+.orange{background:orange;}
+.blue{background:dodgerblue;}
+.gray{background:gray;}
