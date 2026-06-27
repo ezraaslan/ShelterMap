@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Philadelphia Homeless Shelter Finder</h1>
+
+<div id="controls">
+
+<label>
+
+Search Radius
+
+<input
+type="range"
+id="radius"
+min="1"
+max="20"
+value="5">
+
+<span id="radiusValue">
+
+5
+
+</span>
+
+miles
+
+</label>
+
+</div>
+
+<div id="map"></div>
+
+{% endblock %}
