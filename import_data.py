@@ -31,6 +31,19 @@ for feature in data["features"]:
 
     p = feature["properties"]
 
+    facility = (p.get("social_facility") or "").lower()
+
+    bad_types = {
+        "nursing_home",
+        "group_home",
+        "assisted_living",
+        "day_care",
+        "hospice"
+    }
+
+    if facility in bad_types:
+        continue
+
     if feature["geometry"]["type"] == "Point":
         lon, lat = feature["geometry"]["coordinates"]
     else:
