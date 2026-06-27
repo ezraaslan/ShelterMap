@@ -3,6 +3,7 @@ const markerLayer = L.layerGroup().addTo(map);
 
 let resources = [];
 let userLocation = null;
+let radiusCircle = null;
 
 L.tileLayer(
 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -21,6 +22,7 @@ radiusSlider.oninput = function(){
 
     radiusValue.innerText = this.value;
 
+    updateRadiusCircle();
     drawMarkers();
 
 }
@@ -39,8 +41,8 @@ L.marker([lat,lon])
 .bindPopup("You are here")
 .openPopup();
 map.setView([lat,lon],14);
+updateRadiusCircle();
 drawMarkers();
-
 });
 
 }
@@ -150,5 +152,26 @@ function distanceMiles(lat1, lon1, lat2, lon2){
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
     return R * c;
+
+}
+
+function updateRadiusCircle() {
+
+    if (!userLocation)
+        return;
+
+    const radiusMeters = radiusSlider.value * 1609.34;
+
+    if (radiusCircle) {
+        radiusCircle.setRadius(radiusMeters);
+    } else {
+        radiusCircle = L.circle(userLocation, {
+            radius: radiusMeters,
+            color: "#3388ff",
+            weight: 2,
+            fillColor: "#3388ff",
+            fillOpacity: 0.2
+        }).addTo(map);
+    }
 
 }
