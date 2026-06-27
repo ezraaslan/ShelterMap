@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS shelters(
     phone TEXT,
     website TEXT,
     operator TEXT,
-    facility_type TEXT,
+    category TEXT,
     serves TEXT,
     wheelchair TEXT,
     hours TEXT,
@@ -44,6 +44,15 @@ for feature in data["features"]:
     if facility in bad_types:
         continue
 
+    if facility == "food_bank":
+        category = "Food Bank"
+    elif facility == "soup_kitchen":
+        category = "Soup Kitchen"
+    elif facility == "shelter":
+        category = "Shelter"
+    else:
+        category = "Other"
+
     if feature["geometry"]["type"] == "Point":
         lon, lat = feature["geometry"]["coordinates"]
     else:
@@ -67,7 +76,7 @@ for feature in data["features"]:
         phone,
         website,
         operator,
-        facility_type,
+        category,
         serves,
         wheelchair,
         hours,
@@ -82,7 +91,7 @@ for feature in data["features"]:
         p.get("phone") or p.get("contact:phone"),
         p.get("website") or p.get("contact:website"),
         p.get("operator"),
-        p.get("social_facility"),
+        category,
         p.get("social_facility:for"),
         p.get("wheelchair"),
         p.get("opening_hours"),
