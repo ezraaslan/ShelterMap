@@ -104,7 +104,9 @@ function drawMarkers() {
         .bindPopup(`
             <b>${resource.name}</b><br>
             ${resource.category}<br>
-            ${resource.address}
+            ${resource.address}<br>
+            ${resource.phone}<br>
+            ${resource.hours}
         `);
 
     });
