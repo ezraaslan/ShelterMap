@@ -41,3 +41,25 @@ map.setView([lat,lon],14);
 });
 
 }
+
+fetch("/api/resources")
+    .then(response => response.json())
+    .then(resources => {
+
+        resources.forEach(resource => {
+
+            if (!resource.latitude || !resource.longitude)
+                return;
+
+            L.marker([resource.latitude, resource.longitude])
+                .addTo(map)
+                .bindPopup(`
+                    <b>${resource.name || "Unnamed"}</b><br>
+                    <b>Category:</b> ${resource.category}<br>
+                    ${resource.address || ""}<br>
+                    ${resource.phone || ""}
+                `);
+
+        });
+
+    });
