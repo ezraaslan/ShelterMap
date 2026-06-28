@@ -160,7 +160,7 @@ function updateRadiusCircle() {
     if (!userLocation)
         return;
 
-    const radiusMeters = radiusSlider.value * 1609.34;
+    const radiusMeters = radiusSlider.value * 1609.34; // conversion to miles
 
     if (radiusCircle) {
         radiusCircle.setRadius(radiusMeters);
