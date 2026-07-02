@@ -125,6 +125,11 @@ function drawMarkers() {
             <b>Phone: </b>${resource.phone || "Not Available"}<br>
             <b>Hours: </b>${resource.hours || "Not Available"}<br>
             <b>Serves: </b> ${resource.serves || "Everyone"}<br>
+
+
+            <button class="button-7" role="button" onclick="getDirections(${resource.latitude}, ${resource.longitude})">
+                📍 Get Directions
+            </button>
         `);
 
     });
@@ -176,3 +181,9 @@ function updateRadiusCircle() {
     }
 
 }
+
+ function getDirections(lat, lon) {
+            const url =  `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
+            window.open(url, '_blank')
+
+        }
