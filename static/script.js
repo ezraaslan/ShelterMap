@@ -31,8 +31,8 @@ if(navigator.geolocation){
 
 navigator.geolocation.getCurrentPosition(function(position){
 
-const lat=position.coords.latitude;
-const lon=position.coords.longitude;
+const lat=39.951061//position.coords.latitude;
+const lon=-75.165619//position.coords.longitude;
 userLocation = [lat, lon];
 
 L.marker([lat,lon])
@@ -119,11 +119,12 @@ function drawMarkers() {
         )
         .addTo(markerLayer)
         .bindPopup(`
-            <b>${resource.name}</b><br>
-            ${resource.category}<br>
-            ${resource.address}<br>
-            ${resource.phone}<br>
-            ${resource.hours}
+            <b>${resource.name || "Not Available"}</b><br>
+            ${resource.category || "Not Available"}<br>
+            <b>Address: </b>${resource.address || "Not Available"}<br>
+            <b>Phone: </b>${resource.phone || "Not Available"}<br>
+            <b>Hours: </b>${resource.hours || "Not Available"}<br>
+            <b>Serves: </b> ${resource.serves || "Everyone"}<br>
         `);
 
     });
