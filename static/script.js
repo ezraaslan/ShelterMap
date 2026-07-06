@@ -230,3 +230,24 @@ const darkTiles = L.tileLayer(
     { maxZoom: 19 }
 );
 
+const largeTextBtn = document.getElementById("largeTextBtn");
+
+// Restore preference
+if (localStorage.getItem("largeText") === "true") {
+    document.body.classList.add("large-text");
+    largeTextBtn.textContent = "Normal Text";
+}
+
+largeTextBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("large-text");
+
+    const enabled = document.body.classList.contains("large-text");
+
+    localStorage.setItem("largeText", enabled);
+
+    largeTextBtn.textContent = enabled
+        ? "Normal Text"
+        : "Large Text";
+
+});

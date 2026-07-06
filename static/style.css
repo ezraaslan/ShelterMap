@@ -1,3 +1,24 @@
+/* large text button */
+body.large-text {
+    font-size: 120%;
+}
+body.large-text button {
+    font-size: 1.1rem;
+}
+
+body.large-text input {
+    font-size: 1.1rem;
+}
+
+body.large-text label {
+    font-size: 1.1rem;
+}
+
+body.large-text .leaflet-popup-content {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
 /* dark mode */
 body.dark {
   background: #1e1e1e;
