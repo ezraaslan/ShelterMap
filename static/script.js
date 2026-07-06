@@ -187,3 +187,46 @@ function updateRadiusCircle() {
             window.open(url, '_blank')
 
         }
+
+// dark mode button
+const darkModeBtn = document.getElementById("darkModeBtn");
+
+if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark");
+    darkModeBtn.textContent = "Light Mode";
+}
+
+darkModeBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    const enabled = document.body.classList.contains("dark");
+
+    localStorage.setItem("darkMode", enabled);
+
+    darkModeBtn.textContent = enabled
+        ? "Light Mode"
+        :  "Dark Mode";
+
+    if (enabled) {
+    map.removeLayer(lightTiles);
+    darkTiles.addTo(map);
+} else {
+    map.removeLayer(darkTiles);
+    lightTiles.addTo(map);
+}
+
+});
+
+const lightTiles = L.tileLayer(
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    { maxZoom: 19 }
+);
+
+lightTiles.addTo(map);
+
+const darkTiles = L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+    { maxZoom: 19 }
+);
+

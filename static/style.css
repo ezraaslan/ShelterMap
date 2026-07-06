@@ -1,7 +1,7 @@
 /* dark mode */
 body.dark {
   background: #1e1e1e;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 body.dark .sidebar {
@@ -10,12 +10,12 @@ body.dark .sidebar {
 
 body.dark button {
     background: #444;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 body.dark input {
     background: #333;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 body{
